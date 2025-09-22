@@ -82,7 +82,7 @@ class SalesInvoice(SalesInvoiceController):
         
         data = {}
         data["invoiceType"] = "Sale Invoice"
-        data["invoiceDate"] = self.posting_date
+        data["invoiceDate"] = str(self.posting_date)
         
         data["sellerNTNCNIC"] = self.company_tax_id
         data["sellerBusinessName"] = self.company
