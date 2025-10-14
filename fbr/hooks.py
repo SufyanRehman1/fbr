@@ -42,8 +42,14 @@ app_license = "mit"
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
-# include js in doctype views
-doctype_js = {"Sales Invoice" : "public/js/sales_invoice_item.js"}
+# include js in doctype viewss
+doctype_js = {
+    "Sales Invoice": "public/js/sales_invoice_item.js",
+    "Sales Order": "public/js/sales_order_item.js",
+    "Delivery Note": "public/js/delivery_note_item.js",
+    "Quotation": "public/js/quotation_item.js",
+}
+
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -242,3 +248,34 @@ override_doctype_class = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+fixtures = [
+    {
+        "doctype": "Workflow",
+        "filters": [
+            ["name", "in", ["Sales Invoice Workflow 2"]]
+        ]
+    },
+    {
+        "doctype": "Workflow State",
+        "filters": [
+            ["name", "in", [
+                "Draft",
+                "Sent for Approval",
+                "Sent for Auditor's Approval",
+                "Approved",
+                "Submitted"
+            ]]
+        ]
+    },
+    {
+        "doctype": "Workflow Action Master",
+        "filters": [
+            ["name", "in", [
+                "Send for Approval",
+                "Approve",
+                "Submit"
+            ]]
+        ]
+    }
+]
+# fixtures = ["Custom Field", "Property Setter", "Print Format", "Workflow", "Workflow State", "Workflow Action Master"]	
