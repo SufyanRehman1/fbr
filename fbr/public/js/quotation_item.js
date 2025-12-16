@@ -18,3 +18,16 @@ frappe.ui.form.on("Quotation Item", {
 });
 
 
+frappe.ui.form.on("Quotation", {
+    refresh(frm) {
+        // Remove the "Set as Lost" button (added by ERPNext core)
+        if (frm.custom_buttons && frm.custom_buttons["Set as Lost"]) {
+            frm.remove_custom_button("Set as Lost");
+        }
+
+        // Also handle delayed rendering (ERPNext sometimes adds buttons after refresh)
+        setTimeout(() => {
+            frm.remove_custom_button("Set as Lost");
+        }, 300);
+    }
+});
